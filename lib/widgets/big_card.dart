@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:news_app/helpers/constants.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/news_details_screen.dart';
 
@@ -36,7 +37,9 @@ class BigCard extends StatelessWidget {
                           if(loading == null){
                             return child;
                           }
-                          return Center(child: CircularProgressIndicator());
+                          return Center(child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation(kPrimaryColor),
+                          ));
                         },
                       ),
                     ) : Icon(Icons.image,size: 100,),
@@ -47,9 +50,9 @@ class BigCard extends StatelessWidget {
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: EdgeInsets.all(8),
-                  child: Text(title,textAlign: TextAlign.center,style: TextStyle(color: Colors.white),),
+                  child: Text(title,textAlign: TextAlign.center,style: TextStyle(color: kWhiteColor),),
                   decoration: BoxDecoration(
-                    color: Colors.red[900].withOpacity(0.8),
+                    color: kPrimaryColor.withOpacity(0.8),
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20)),
@@ -68,9 +71,9 @@ class BigCard extends StatelessWidget {
                     children: [
                       Text(
                         publishAt,
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: kBlackColor),
                       ),
-                      Icon(Icons.public,color: Colors.red[900],)
+                      Icon(Icons.public,color: kPrimaryColor,)
                     ],
                   ),
                 ),
@@ -79,11 +82,11 @@ class BigCard extends StatelessWidget {
           ],
         ),
         decoration: BoxDecoration(
-            color: Colors.white,
+            color: kWhiteColor,
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
+                  color: kBlackColor.withOpacity(0.5),
                   blurRadius: 5,
                   spreadRadius: 1)
             ]),

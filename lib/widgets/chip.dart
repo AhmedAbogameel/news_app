@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/helpers/constants.dart';
 
 class CustomChip extends StatelessWidget {
 
@@ -12,7 +13,7 @@ class CustomChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      shadowColor: Colors.red[900],
+      shadowColor: kPrimaryColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -26,7 +27,7 @@ class CustomChip extends StatelessWidget {
               padding: const EdgeInsets.only(left: 3.0),
               child: Icon(
                 icon,
-                color: Colors.red[900],
+                color: kPrimaryColor,
                 size: 22,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:news_app/helpers/constants.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/widgets/chip.dart';
 
@@ -14,36 +15,43 @@ class NewsDetailsScreen extends StatelessWidget {
         middle: Text('Breaking News'),
         backgroundColor: Colors.transparent,
         border: Border.all(color: Colors.transparent),
-        actionsForegroundColor: Colors.red[900],
+        actionsForegroundColor: kPrimaryColor,
       ),
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
-              Card(
-                color: Colors.red[900].withOpacity(0.7),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    newsModel.title,
-                    style: TextStyle(fontSize: 25,color: Colors.white),
-                    textAlign: TextAlign.center,
+              Expanded(
+                child: Card(
+                  color: kPrimaryColor.withOpacity(0.7),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Center(
+                      child: Text(
+                        newsModel.title,
+                        style: TextStyle(fontSize: 25,color: kWhiteColor),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                 ),
               ),
-              Hero(
-                tag: newsModel.title,
-                child: Card(
-                  elevation: 0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: newsModel.urlToImage == null ? Icon(Icons.image,size: 150,) : Image.network(
-                      newsModel.urlToImage,
-                      fit: BoxFit.cover,
+              Expanded(
+                flex: 2,
+                child: Hero(
+                  tag: newsModel.title,
+                  child: Card(
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: newsModel.urlToImage == null ? Icon(Icons.image,size: 150,) : Image.network(
+                        newsModel.urlToImage,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -51,28 +59,34 @@ class NewsDetailsScreen extends StatelessWidget {
               SizedBox(
                 height: 8,
               ),
-              Row(
-                children: [
-                  CustomChip(title: newsModel.author,icon: Icons.edit),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  CustomChip(title: newsModel.publishedAt,icon: Icons.public),
-                ],
+              FittedBox(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomChip(title: newsModel.author,icon: Icons.edit),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    CustomChip(title: newsModel.publishedAt,icon: Icons.public),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 8,
               ),
               Expanded(
+                flex: 2,
                 child: Card(
-                  color: Colors.red[900].withOpacity(0.2),
+                  color: kPrimaryColor.withOpacity(0.2),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                   child: Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: Center(
-                      child: Text(
-                        newsModel.description,
-                        style: TextStyle(fontSize: 22),
+                      child: SingleChildScrollView(
+                        child: Text(
+                          newsModel.description,
+                          style: TextStyle(fontSize: 22),
+                        ),
                       ),
                     ),
                   ),

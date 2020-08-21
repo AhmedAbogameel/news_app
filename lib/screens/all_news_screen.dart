@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/helpers/constants.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/providers/news_provider.dart';
 import 'package:news_app/widgets/big_card.dart';
@@ -28,7 +29,7 @@ class _AllNewsScreenState extends State<AllNewsScreen> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('Home',style: TextStyle(fontSize: 20,),),
-        backgroundColor: Colors.red[900],
+        backgroundColor: kPrimaryColor,
       ),
       child: SafeArea(
         child: FutureBuilder<List<NewsModel>>(
@@ -48,7 +49,7 @@ class _AllNewsScreenState extends State<AllNewsScreen> {
                   })
               : Center(
                   child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation(Colors.teal),
+                  valueColor: AlwaysStoppedAnimation(kPrimaryColor),
                 )),
         ),
       ),
