@@ -17,7 +17,6 @@ class NewsProvider with ChangeNotifier {
 
   Future<List<NewsModel>> fetchNews()async{
     int _randomAPI = Random().nextInt(_fakeAPIs.length);
-    print(_randomAPI);
     String url = _fakeAPIs[_randomAPI];
     final response = await http.get(url);
     if(response.statusCode == 200){
@@ -30,7 +29,6 @@ class NewsProvider with ChangeNotifier {
           allNews.add(model);
         }
       });
-      notifyListeners();
       return allNews;
     }else{
       throw Exception('Sorry can\'t load right now');
