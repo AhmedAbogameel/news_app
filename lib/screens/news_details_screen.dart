@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:news_app/models/news_model.dart';
+import 'package:news_app/widgets/chip.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
   static const String routeName = '/news_details_screen';
@@ -40,7 +41,7 @@ class NewsDetailsScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(20),
-                    child: Image.network(
+                    child: newsModel.urlToImage == null ? Icon(Icons.image,size: 150,) : Image.network(
                       newsModel.urlToImage,
                       fit: BoxFit.cover,
                     ),
@@ -52,11 +53,11 @@ class NewsDetailsScreen extends StatelessWidget {
               ),
               Row(
                 children: [
-                  buildChip(newsModel.author, Icons.edit),
+                  CustomChip(title: newsModel.author,icon: Icons.edit),
                   SizedBox(
                     width: 15,
                   ),
-                  buildChip(newsModel.publishedAt, Icons.public),
+                  CustomChip(title: newsModel.publishedAt,icon: Icons.public),
                 ],
               ),
               SizedBox(
@@ -79,33 +80,6 @@ class NewsDetailsScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildChip(title, icon) {
-    return Card(
-      elevation: 5,
-      shadowColor: Colors.red[900],
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Text(
-              title,
-              textAlign: TextAlign.center,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 3.0),
-              child: Icon(
-                icon,
-                color: Colors.red[900],
-                size: 22,
-              ),
-            ),
-          ],
         ),
       ),
     );
