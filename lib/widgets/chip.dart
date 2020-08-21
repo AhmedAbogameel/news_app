@@ -20,14 +20,13 @@ class CustomChip extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              title,
+              title ?? 'Unknown',
               textAlign: TextAlign.center,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 3.0),
               child: Icon(
                 icon,
-                color: kPrimaryColor,
                 size: 22,
               ),
             ),

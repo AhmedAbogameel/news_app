@@ -32,7 +32,6 @@ dependencies:
   http:
   provider:
   intl:
-  device_preview:
 
 dev_dependencies:
   flutter_test:

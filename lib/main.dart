@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,11 +7,11 @@ import 'package:news_app/screens/all_news_screen.dart';
 import 'package:news_app/screens/news_details_screen.dart';
 import 'package:provider/provider.dart';
 
-bool _released = false;
-
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: kPrimaryColor));
-  runApp(DevicePreview(enabled: _released,builder: (_)=> EntryPoint()));}
+  SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(statusBarColor: kPrimaryColor));
+  runApp(EntryPoint());
+}
 
 class EntryPoint extends StatelessWidget {
   @override
@@ -25,15 +24,16 @@ class EntryPoint extends StatelessWidget {
       ],
       child: CupertinoApp(
         home: AllNewsScreen(),
-debugShowCheckedModeBanner: _released,
-//        theme: CupertinoThemeData.raw(
-//          Brightness.dark,
-//          Colors.black,
-//          Colors.black,
-//          CupertinoTextThemeData(),
-//          Colors.teal,
-//          Colors.white,
-//        ),
+        debugShowCheckedModeBanner: false,
+        title: 'Breaking News',
+        theme: CupertinoThemeData.raw(
+            Brightness.light,
+            kPrimaryColor,
+            kPrimaryColor,
+            CupertinoTextThemeData(),
+            kPrimaryColor,
+            kWhiteColor,
+        ),
         routes: {
           NewsDetailsScreen.routeName: (_) => NewsDetailsScreen(),
         },

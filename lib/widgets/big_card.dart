@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:news_app/helpers/constants.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/screens/news_details_screen.dart';
+import 'package:news_app/widgets/chip.dart';
 
 class BigCard extends StatelessWidget {
   final String publishAt;
@@ -37,9 +38,7 @@ class BigCard extends StatelessWidget {
                           if(loading == null){
                             return child;
                           }
-                          return Center(child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation(kPrimaryColor),
-                          ));
+                          return Center(child: CupertinoActivityIndicator(),);
                         },
                       ),
                     ) : Icon(Icons.image,size: 100,),
@@ -63,21 +62,25 @@ class BigCard extends StatelessWidget {
             Positioned(
               top: size.width / 200,
               right: size.width / 80,
-              child: Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                child: Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: Row(
-                    children: [
-                      Text(
-                        publishAt,
-                        style: TextStyle(color: kBlackColor),
-                      ),
-                      Icon(Icons.public,color: kPrimaryColor,)
-                    ],
-                  ),
-                ),
+              child: CustomChip(
+                title: publishAt,
+                icon: Icons.public,
               ),
+//              child: Card(
+//                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+//                child: Padding(
+//                  padding: const EdgeInsets.all(5.0),
+//                  child: Row(
+//                    children: [
+//                      Text(
+//                        publishAt,
+//                        style: TextStyle(color: kBlackColor),
+//                      ),
+//                      Icon(Icons.public,color: kPrimaryColor,)
+//                    ],
+//                  ),
+//                ),
+//              ),
             ),
           ],
         ),

@@ -28,7 +28,7 @@ class _AllNewsScreenState extends State<AllNewsScreen> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('Home',style: TextStyle(fontSize: 20,),),
+        middle: Text('Home',style: TextStyle(color: kWhiteColor),),
         backgroundColor: kPrimaryColor,
       ),
       child: SafeArea(
@@ -48,9 +48,7 @@ class _AllNewsScreenState extends State<AllNewsScreen> {
                     );
                   })
               : Center(
-                  child: CircularProgressIndicator(
-                  valueColor: AlwaysStoppedAnimation(kPrimaryColor),
-                )),
+                  child: CupertinoActivityIndicator(),),
         ),
       ),
     );
