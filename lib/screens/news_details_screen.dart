@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:news_app/helpers/constants.dart';
 import 'package:news_app/models/news_model.dart';
 import 'package:news_app/widgets/chip.dart';
@@ -15,7 +14,6 @@ class NewsDetailsScreen extends StatelessWidget {
         middle: Text('Breaking News'),
         backgroundColor: Colors.transparent,
         border: Border.all(color: Colors.transparent),
-        actionsForegroundColor: kPrimaryColor,
       ),
       child: SafeArea(
         child: Padding(
