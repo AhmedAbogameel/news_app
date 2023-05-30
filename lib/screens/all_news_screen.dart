@@ -17,6 +17,7 @@ class AllNewsScreen extends StatelessWidget {
             style: TextStyle(color: kWhiteColor),
           ),
           backgroundColor: kPrimaryColor,
+          brightness: Brightness.dark,
         ),
         child: Consumer<NewsProvider>(
           builder: (ctx, provider, child) {

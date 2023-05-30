@@ -14,6 +14,7 @@ class NewsDetailsScreen extends StatelessWidget {
         middle: Text('Breaking News'),
         backgroundColor: Colors.transparent,
         border: Border.all(color: Colors.transparent),
+        brightness: Brightness.light,
       ),
       child: SafeArea(
         child: Padding(
